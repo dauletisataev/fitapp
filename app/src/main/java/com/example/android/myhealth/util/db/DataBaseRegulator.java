@@ -29,6 +29,10 @@ public class DataBaseRegulator extends SQLiteOpenHelper {
     public static final String TREATMENT_START = "treatmentStart";
     public static final String IS_END = "isEnd";
     public static final String COUNT = "count";
+    public static final String MEDICATION_TIME = "medicationTime";
+    public static final String TIME_OF_DAY = "timeOfDay";
+    public static final String ID_MED = "idMed";
+    public static final String INDEX = "index";
 
     public DataBaseRegulator(Context context) {
         super(context, DB_NAME, null, 1);
@@ -64,6 +68,11 @@ public class DataBaseRegulator extends SQLiteOpenHelper {
                 EVERY + " integer," +
                 TREATMENT_ID + " text," +
                 COUNT + " integer" + ");");
+
+        db.execSQL("create table " + MEDICATION_TIME + " (" +
+                TIME_OF_DAY + "text,"  +
+                ID_MED + "integer," +
+                INDEX + "integer" + ")");
     }
 
     @Override
