@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#777"
+        android:padding="1dp">
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/medicament_name"
+                style="@style/medicament_view"
+                android:textSize="18sp" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/dosage"
+                style="@style/medicament_view" />
+
+            <TextView
+                android:id="@+id/per_diem"
+                style="@style/medicament_view" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/every"
+                style="@style/medicament_view" />
+
+            <TextView
+                android:id="@+id/amount_of_days"
+                style="@style/medicament_view" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/eating_time"
+                style="@style/medicament_view"
+                android:gravity="center" />
+        </TableRow>
+
+    </TableLayout>
+
+</com.google.android.material.card.MaterialCardView>

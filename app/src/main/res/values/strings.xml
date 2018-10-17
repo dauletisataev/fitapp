@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">My Health</string>
+    <string name="add_patient">Добавить пациента</string>
+    <string name="patients_list">Список пациентов</string>
+    <string name="done">Готово</string>
+    <string name="iin">ИИН</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="first_name">Имя</string>
+    <string name="last_name">Фамилия</string>
+    <string name="patronymic">Отчество</string>
+    <string name="date_of_birth">Дата рождения</string>
+    <string name="gender">Пол</string>
+    <string name="height">Рост</string>
+    <string name="weight">Вес</string>
+    <string name="course_of_treatment">Курс лечения</string>
+    <string name="add">Добавить</string>
+    <string name="male_short">M</string>
+    <string name="female_short">Ж</string>
+    <string name="diagnosis_input">Введите диагноз</string>
+    <string name="table_number">Стол №</string>
+    <string name="medicaments">Лекарства</string>
+    <string name="medicament_name">Название медикамента</string>
+    <string name="dosage">Дозировка</string>
+    <string name="mg">мг</string>
+    <string name="per_diem">В день</string>
+    <string name="times">раз(а)</string>
+    <string name="amoun_of_days">Дней</string>
+    <string name="before_eating">До еды</string>
+    <string name="while_eating_radio_button">Во время еды</string>
+    <string name="after_eating_radio_button">После еды</string>
+    <string name="every">Каждые</string>
+    <string name="days">Дней</string>
+    <string name="sign_in">Войти как...</string>
+    <string name="patient">пациент</string>
+    <string name="doctor">врач</string>
+    <string name="input_iin">Введите ваш ИИН</string>
+    <string name="mb">mB</string>
+    <string name="miband_disabled">miBand = disabled</string>
+    <string name="miband_enabled">miband = enabled</string>
+    <string name="vibration">vibration</string>
+    <string name="pulse">Пульс</string>
+    <string name="active_treatment">Активные лечения</string>
+    <string name="dialog">dialog</string>
+    <string name="update">Изменить</string>
+    <string name="delete">Удалить</string>
+    <string name="medicament_today">Лекарства на сегодня</string>
+    <string name="start">Начать лечение</string>
+    <string name="textView">TextView</string>
+    <string name="view">Просмотр</string>
+    <string name="eating_time">По отношению к еде</string>
+
+</resources>
