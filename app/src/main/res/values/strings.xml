@@ -48,5 +48,7 @@
     <string name="textView">TextView</string>
     <string name="view">Просмотр</string>
     <string name="eating_time">По отношению к еде</string>
+    <string name="edit">edit</string>
+    <string name="time">ЧЧ:ММ</string>
 
 </resources>

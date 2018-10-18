@@ -13,7 +13,7 @@ public class Medicament {
     private short every;
     private int count;
     private short toDayIntake;
-
+//comment
     public Medicament(long treatmentID) {
         id = -1;
         this.treatmentID = treatmentID;
