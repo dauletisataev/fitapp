@@ -33,6 +33,7 @@ public class DataBaseRegulator extends SQLiteOpenHelper {
     public static final String TIME_OF_DAY = "timeOfDay";
     public static final String ID_MED = "idMed";
     public static final String INDEX = "index";
+    public static final String IS_EQUALLY = "isEqually";
 
     public DataBaseRegulator(Context context) {
         super(context, DB_NAME, null, 1);
@@ -67,7 +68,8 @@ public class DataBaseRegulator extends SQLiteOpenHelper {
                 EATING_TIME + " text," +
                 EVERY + " integer," +
                 TREATMENT_ID + " text," +
-                COUNT + " integer" + ");");
+                COUNT + " integer" +
+                IS_EQUALLY + " text" + ");");
 
         db.execSQL("create table " + MEDICATION_TIME + " (" +
                 TIME_OF_DAY + "text,"  +

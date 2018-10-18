@@ -1,19 +1,23 @@
 package com.example.android.myhealth;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.example.android.myhealth.util.EatingTime;
 import com.example.android.myhealth.util.db.DataBaseRegulator;
 import com.example.android.myhealth.util.db.ReadAndWrite;
 import com.example.android.myhealth.work.Medicament;
 
-public class MedicamentActivity extends AppCompatActivity {
+public class MedicamentActivity extends AppCompatActivity implements View.OnClickListener {
     private ReadAndWrite raw;
     private long treatmentID;
     private int medicamentID;
@@ -25,6 +29,7 @@ public class MedicamentActivity extends AppCompatActivity {
     private RadioGroup eatingTimeRG;
     private EditText everyET;
     private Button doneBtn;
+    private Button editBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,19 +48,40 @@ public class MedicamentActivity extends AppCompatActivity {
         eatingTimeRG = findViewById(R.id.eating_time_radio_group);
         everyET = findViewById(R.id.every_edit_text);
         doneBtn = findViewById(R.id.done_btn);
+        editBtn = findViewById(R.id.edit);
+        editBtn.setOnClickListener(this);
+        doneBtn.setOnClickListener(this);
 
         initializeField();
 
-        doneBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.done_btn:
                 if (initializeMedicament()) {
                     setResult(RESULT_OK, null);
                     raw.writeDb(medicament);
                     finish();
                 }
-            }
-        });
+                break;
+            case R.id.edit:
+                showDialog(1);
+                break;
+        }
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+        adb.setTitle("Время приема леарств");
+        for (int i = 0; i < Integer.parseInt(perDiemET.getText().toString()); i++) {
+            View view = getLayoutInflater().inflate(R.layout.time_dialog_view, null);
+            ((TextView) view.findViewById(R.id.time_info)).setText(i + "й прием");
+            adb.setView(view);
+        }
+        return adb.create();
     }
 
     private void initializeField() {
