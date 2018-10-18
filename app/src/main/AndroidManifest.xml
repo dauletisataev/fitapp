@@ -38,6 +38,7 @@
         <activity android:name=".PatientMainActivity" />
         <activity android:name=".PatientActivity" />
         <activity android:name=".TreatmentActivityView"></activity>
+        <receiver android:name=".notification.NotificationReceiver"/>
     </application>
 
 </manifest>
