@@ -1,6 +1,9 @@
 package com.example.android.myhealth;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import androidx.annotation.RequiresApi;
@@ -10,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +23,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.example.android.myhealth.notification.NotificationReceiver;
 import com.example.android.myhealth.util.EatingTime;
 import com.example.android.myhealth.util.db.DataBaseRegulator;
 import com.example.android.myhealth.util.db.ReadAndWrite;
@@ -26,6 +31,7 @@ import com.example.android.myhealth.work.Medicament;
 import com.example.android.myhealth.work.Treatment;
 import com.example.android.myhealth.work.adapters.AdapterForMeds;
 import com.example.android.myhealth.work.adapters.SwipeController;
+import com.example.android.myhealth.work.adapters.SwipeControllerActions;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -95,7 +101,13 @@ public class TreatmentActivityView extends AppCompatActivity implements View.OnC
             adapter = new AdapterForMeds(this, raw.readAllMedicamentFromDb(treatment.getId()));
             recyclerView.setAdapter(adapter);
 
-            SwipeController controller = new SwipeController();
+            SwipeController controller = new SwipeController(new SwipeControllerActions() {
+                @Override
+                public void onRightClicked(int position) {
+                    Log.d("mLog", "onRightClicked: ");
+                    setAlarmService(null);
+                }
+            });
 
             ItemTouchHelper itemTouchHelper = new ItemTouchHelper(controller);
             itemTouchHelper.attachToRecyclerView(recyclerView);
@@ -183,6 +195,16 @@ public class TreatmentActivityView extends AppCompatActivity implements View.OnC
 //                container.addView(view);
 //            }
         }
+    }
+    private void setAlarmService(Medicament medicament){
+        int timeInSec = 5;
+
+        Intent intent = new Intent(this, NotificationReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                this.getApplicationContext(), 234, intent, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (timeInSec * 1000), pendingIntent);
+
     }
 
 //    private String getEveryString(Short every) {
